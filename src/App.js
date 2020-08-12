@@ -1,13 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import NavBar from './Components/NavBar';
+import { Routing } from './Components/Routing';
+import { ProductProvider } from './Context';
+// import { ProductProvider } from './GlobalContex';
+
 
 function App() {
   return (
-    <div className="App">
-        <NavBar />      
-    </div>
+
+      <ProductProvider>
+         <Routing />
+      </ProductProvider>
+  
   );
 }
 
