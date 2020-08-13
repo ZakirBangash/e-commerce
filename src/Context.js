@@ -15,8 +15,9 @@ export const ProductProvider = ({children}) => {
       <GlobalContext.Provider value={{
           storeProducts
       }}>
-          {children}  
           
+          {children}  
+
       </GlobalContext.Provider>
     )
 }
