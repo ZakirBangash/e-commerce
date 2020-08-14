@@ -1,21 +1,38 @@
 import React,{createContext,useReducer,useState} from 'react';
 import {storeProducts,detailProduct} from './Data'
+import { act } from 'react-dom/test-utils';
 
 
 export const GlobalContext = createContext();
-
+const Cart=[ ];
 
 export const ProductProvider = ({children}) => {
  
-    console.log(storeProducts[0])
-    console.log(typeof(detailProduct))
-    console.log(detailProduct)
+    
 // Use Reducer for state management
-    const [state, setstate] = useState(storeProducts)
+    
+
+    let [state, dispatch] = useReducer(reducer, Cart);
+
+
+    function addToCart(transObj) {
+        console.log(transObj.inCart)
+        dispatch(
+            {
+                type: 'AddToCart',
+                payload: transObj
+                
+            }
+        );
+
+    }
+
+
 
     return (
       <GlobalContext.Provider value={{
-          storeProducts
+          storeProducts,
+          addToCart
       }}>
           
           {children}  
@@ -25,3 +42,24 @@ export const ProductProvider = ({children}) => {
 }
 
 
+const reducer = ( (state, action) => {
+
+    switch (action.type) {
+        case 'AddToCart': {
+             console.log(action.payload.inCart)
+             return [...state,action.payload.inCart=true]
+        
+        }
+        // case 'DeleteTransaction':{
+        //     const newState =state.filter( trans => trans.id !== action.payload)    
+        //     console.log(newState);
+        //     return newState
+
+
+        // }
+        
+        default:
+            return state;
+
+    
+}})

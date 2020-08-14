@@ -7,7 +7,7 @@ import { Col } from 'reactstrap';
 export const ProductDetail = () => {
     const {storeProducts} = useContext(GlobalContext);
     const {slug} = useParams();
-    const {img} = storeProducts[slug];
+    const {price,img,company,info} = storeProducts[slug];
     console.log(img)
     
     return (
@@ -20,6 +20,10 @@ export const ProductDetail = () => {
             </Col>
             <Col className="my-5 mx-auto">
                 <h1>{slug}</h1>
+           <h3>Made by: {company}</h3>
+             <h2>Price: {price}</h2>
+             <h2>Some info about product</h2>
+             {info}
 
             </Col>
 
