@@ -6,20 +6,19 @@ import {
     CardTitle, CardText
 } from 'reactstrap';
 
-export const Product = ({ product: { title, price, img } }) => {
-    console.log(title)
+export const Product = ({ product : { company,id,title, price, img } }) => {
+    console.log(id)
     return (
 
         <Col className="my-5 mx-auto">
             <Card className="card">
                 <CardBody className="py-5 img-container">
-                    <Link to="/about">
+                    <Link to={company}>
                     <img src={img} className='img-fluid' alt="" />
                     </Link>
                     <button className='card-btn' onClick={() => console.log('U clicked on button')}>
                         <i className="fa fa-shopping-cart align-middle">
                         </i>
-
                     </button>
                 </CardBody>
                 <CardFooter className="footer d-flex justify-content-between">

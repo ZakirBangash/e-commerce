@@ -25,8 +25,7 @@ const NavBar = () => {
         {/* <Collapse isOpen={isOpen} navbar> */}
 
           <Nav className="mr-auto" navbar>
-            <Link className='link' to="/" >Product</Link>
-            <Link className='link' to="/about" >About</Link>
+            <Link className='link' to="/ProductHome" >Product</Link>
           </Nav>
 
           <Link className="ml-auto mr-5" to='/Cart'>

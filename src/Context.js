@@ -7,7 +7,9 @@ export const GlobalContext = createContext();
 
 export const ProductProvider = ({children}) => {
  
-    console.log(storeProducts)
+    console.log(storeProducts[0])
+    console.log(typeof(detailProduct))
+    console.log(detailProduct)
 // Use Reducer for state management
     const [state, setstate] = useState(storeProducts)
 

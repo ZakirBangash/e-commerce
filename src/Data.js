@@ -97,5 +97,6 @@ export const storeProducts = [
     }
   ];
   
-  export const detailProduct = {
-  };
+  export const detailProduct = [
+  2,4,5,6,7
+  ];
