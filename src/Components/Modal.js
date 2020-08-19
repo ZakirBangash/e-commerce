@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
+import { useParams } from 'react-router-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,propTypes } from 'reactstrap';
-
-const Modall = ({modal,toggle}) => {
+import {GlobalContext} from '../Context'
+const ProductModal = ({modal,toggle,state}) => {
+         console.log(state)
+  const {storeProducts} = useContext(GlobalContext);
+  if (state !== undefined) {
+    const {company} = storeProducts[state];
+  }
+   
+  
+  
   
   return (
     
-      <Modal isOpen={modal} toggle={toggle} centered >
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+      <Modal isOpen={modal} centered >
+        <h1 className="justify py-4">Item added to Cart Successfully</h1>
         <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         <h2>CompanY: </h2>
         </ModalBody>
         <ModalFooter>
           <Button  color="primary" onClick={toggle}>Do Something</Button>{' '}
@@ -22,4 +31,4 @@ const Modall = ({modal,toggle}) => {
 
 
 
-export default Modall;
+export default ProductModal;

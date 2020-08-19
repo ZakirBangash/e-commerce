@@ -5,14 +5,17 @@ import { Card, CardFooter, CardBody } from "reactstrap";
 
 import { GlobalContext } from "../Context";
 import Modall from "./Modal";
+import ProductModal from "./Modal";
 
 export const Product = ({ product }) => {
   const { storeProducts,addToCart } = useContext(GlobalContext);
   const { img, price, inCart } = storeProducts[product];
 
   const [modal, setModal] = useState(false);
+  const [state, setstate] = useState();
 
   const toggle = () => setModal(!modal);
+  const getItem = (prod)=> prod;
 
   return (
     <Col className="my-5 mx-auto">
@@ -20,14 +23,18 @@ export const Product = ({ product }) => {
         <CardBody className="py-5 img-container">
           <Link to={product}>
             <img src={img} className="img-fluid" alt="" />
-          </Link>
-
+           </Link> 
+           
+           
           <button
             className="card-btn"
             disabled={inCart ? true : false}
             onClick={()=> {
                  toggle();
+                  setstate(product);
               addToCart(storeProducts[product])
+              
+              
             }}
           >
             {inCart ? (
@@ -35,11 +42,20 @@ export const Product = ({ product }) => {
             ) : (
               <i className="fa fa-shopping-cart align-middle"></i>
             )}
+            
           </button>
-          <Modall modal={modal} toggle={toggle} />
-
           
 
+
+          {state === undefined ? ' ' : <ProductModal modal={modal} state={state} toggle={toggle} />}
+          
+          
+          
+           
+          
+
+          
+ 
 
         </CardBody>
         <CardFooter className="footer d-flex justify-content-between">

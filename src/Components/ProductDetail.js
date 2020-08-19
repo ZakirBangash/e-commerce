@@ -7,8 +7,9 @@ import { Col } from 'reactstrap';
 export const ProductDetail = () => {
     const {storeProducts} = useContext(GlobalContext);
     const {slug} = useParams();
+    
     const {price,img,company,info} = storeProducts[slug];
-    console.log(img)
+    console.log(slug)
     
     return (
     

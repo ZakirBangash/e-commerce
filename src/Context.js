@@ -11,12 +11,12 @@ export const ProductProvider = ({children}) => {
     
 // Use Reducer for state management
     
-
+    
     let [state, dispatch] = useReducer(reducer, Cart);
 
 
     function addToCart(transObj) {
-        console.log(transObj.inCart)
+        
         dispatch(
             {
                 type: 'AddToCart',
@@ -43,20 +43,17 @@ export const ProductProvider = ({children}) => {
 
 
 const reducer = ( (state, action) => {
-
+    console.log(state)
     switch (action.type) {
         case 'AddToCart': {
-             console.log(action.payload.inCart)
-             return [...state,action.payload.inCart=true]
+                    
+             return (
+                action.payload.inCart=true,
+                [...state, action.payload]
+             )
         
         }
-        // case 'DeleteTransaction':{
-        //     const newState =state.filter( trans => trans.id !== action.payload)    
-        //     console.log(newState);
-        //     return newState
-
-
-        // }
+       
         
         default:
             return state;

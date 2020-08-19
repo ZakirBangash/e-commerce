@@ -8,7 +8,7 @@ import { Product } from './Product';
 
 export const ProductList = () => {
         const {storeProducts} = useContext(GlobalContext);
-        Object.keys(storeProducts).map(el=>console.log(storeProducts[el]))
+        // Object.keys(storeProducts).map(el=>console.log(storeProducts[el]))
         
     return (
         <div>

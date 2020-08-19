@@ -163,3 +163,9 @@ border:none !important;
   transition: all 0.5s ease-in-out !important;
 
 }
+
+.justify {
+  
+  text-align: center !important;
+  color:limegreen !important;
+}
