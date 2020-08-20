@@ -47,9 +47,9 @@ export const Product = ({ product }) => {
           
 
 
-          {state === undefined ? ' ' : <ProductModal modal={modal} state={state} toggle={toggle} />}
+  {state === undefined ? '' : <ProductModal modal={modal} state={state} toggle={toggle} />}
           
-          
+      
           
            
           

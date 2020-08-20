@@ -8,7 +8,7 @@ export const ProductDetail = () => {
     const {storeProducts} = useContext(GlobalContext);
     const {slug} = useParams();
     
-    const {price,img,company,info} = storeProducts[slug];
+    const {price, img ,company,info} = storeProducts[slug];
     console.log(slug)
     
     return (
@@ -17,7 +17,7 @@ export const ProductDetail = () => {
             <Row>
             <Col className="my-5 mx-auto">
                 <h1>Image</h1>
-            <img src={img} className='img-fluid' alt="Image portion" />
+                <img src={img} className="img-fluid" alt="" />
             </Col>
             <Col className="my-5 mx-auto">
                 <h1>{slug}</h1>

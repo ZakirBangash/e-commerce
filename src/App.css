@@ -94,6 +94,38 @@
 }
 
 
+.container .btn {
+  background-color: transparent !important;
+  border: 0.05rem solid rgb(59, 95, 255) !important;
+  border-radius: 0.8rem !important;
+  margin: 20px 0;
+  position: relative;
+  left: 30%;
+  text-decoration: none !important;
+  display: block;
+  width: 130px;
+  transition: width 0.4s, transform 1s !important;
+  padding: 0.2rem 0.5rem;
+  color: rgb(59, 95, 255) ;
+  margin: 0.2rem , 0.5rem,0.2rem,0;
+  padding: 10px 0;
+}
+
+.container .btn2 {
+  position: relative;
+  left: 40%;
+
+}
+
+.container .btn:hover {
+  background-color: rgb(84, 87, 233)!important;
+
+color:white !important;
+border:none !important;  
+text-decoration: none !important;
+}
+
+
 .nav .btn:hover{
 background-color: rgb(233, 191, 84)!important;
 width: 200px !important;
