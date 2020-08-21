@@ -35,11 +35,7 @@ const ProductModal = ({ modal, toggle, state }) => {
         </Link>
 
       </ModalBody>
-      {/* <ModalFooter>
-        <Button color="primary" onClick={toggle}>
-          Do Something
-        </Button>{" "}
-      </ModalFooter> */}
+     
     </Modal>
   );
 };
