@@ -5,8 +5,8 @@ import { ProductList } from "./ProductList";
 import { ProductDetail } from "./ProductDetail";
 import { ProductHome } from "./ProductHome";
 import { Product } from "./Product";
-import { Cart } from "./Cart";
 import { Home } from "./Home";
+import { Cart } from "./Cart/Cart";
 
 export const Routing = () => {
     return (

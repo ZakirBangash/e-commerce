@@ -12,7 +12,7 @@ export const ProductList = () => {
         
     return (
         <div>
-            <Title />
+            <Title name="Our" title="Products" />
             <Container className="py-5">
             <Row xs="1" sm="2" md="3">
                 {
