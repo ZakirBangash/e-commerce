@@ -4,10 +4,11 @@ import {GlobalContext} from "../../Context";
 import { CartItem } from './CartItem';
 
 export const CartList = () => {
-    const {storeProducts} = useContext(GlobalContext);
+    const {Cart} = useContext(GlobalContext);
+    
     return (
       <Container>
-        {Object.keys(storeProducts).map(product => <CartItem product={product} />) }
+          {Cart.map(product => <CartItem product={product} />) } 
       </Container>
     );
 }

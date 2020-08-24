@@ -23,17 +23,20 @@ const ProductModal = ({ modal, toggle, state }) => {
         <h2 className="text-center">{state} </h2>
         <h3 className="text-muted text-center">Price:{price}</h3>
 
+        <div className="modal-btn">
         <Link to='/ProductHome'>
-        <Button  className=' btn w-50 font-weight-normal ' onClick={toggle}>
+         
+        <button  className=' btn w-50 font-weight-normal ' onClick={toggle}>
           Go to Shopping
-        </Button>
+        </button>
         </Link>
         <Link to='/Cart'>
-        <Button className='btn2 font-weight-normal  ' onClick={toggle}>
+        <button className=' btn font-weight-normal  ' onClick={toggle}>
           Go to Cart
-        </Button>
+        </button>
+       
         </Link>
-
+        </div>
       </ModalBody>
      
     </Modal>

@@ -16,10 +16,22 @@ export const ProductProvider = ({children}) => {
 
 
     function addToCart(transObj) {
-        
+        console.log(transObj);
         dispatch(
             {
                 type: 'AddToCart',
+                payload: transObj
+                
+            }
+        );
+
+    }
+
+    function removeFromCart(transObj) {
+        console.log(transObj)
+        dispatch(
+            {
+                type: 'removeFromCart',
                 payload: transObj
                 
             }
@@ -32,7 +44,9 @@ export const ProductProvider = ({children}) => {
     return (
       <GlobalContext.Provider value={{
           storeProducts,
-          addToCart
+          addToCart,
+          removeFromCart,
+          Cart:state
       }}>
           
           {children}  
@@ -51,10 +65,17 @@ const reducer = ( (state, action) => {
                 action.payload.inCart=true,
                 [...state, action.payload]
              )
-        
         }
+
+        case 'removeFromCart': {
+                 console.log(action.payload)
+
+                action.payload.inCart=false;
+            const newState =state.filter( trans => trans !== action.payload)    
+                console.log(newState)
+            return newState;
        
-        
+        }
         default:
             return state;
 

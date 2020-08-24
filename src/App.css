@@ -2,44 +2,7 @@
   box-sizing: border-box;
 }
 
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .nav {
   background-color: black !important;
   padding: 1rem !important;
@@ -51,14 +14,7 @@
   font-weight: 600 !important;
   color: #ffe484 !important; 
 }
-
-/* .link:hover {
-  text-decoration: none;
-} */
-
  
-  
-
 
 .link:hover {
   transform: scale(1.1) !important;
@@ -94,7 +50,7 @@
 }
 
 
-.container .btn {
+ .modal-btn .btn {
   background-color: transparent !important;
   border: 0.05rem solid rgb(59, 95, 255) !important;
   border-radius: 0.8rem !important;
@@ -110,7 +66,7 @@
   margin: 0.2rem , 0.5rem,0.2rem,0;
   transition: all 0.5s ease-in-out !important; 
   padding: 10px 0;
-}
+} 
 
 .container .btn2 {
   position: relative;
@@ -118,8 +74,8 @@
 
 }
 
-.container .btn:hover {
-  background-color: rgb(84, 87, 233)!important;
+.modal-btn .btn:hover {
+background-color: rgb(84, 87, 233)!important;
 color:white !important;
 border:none !important;  
 text-decoration: none !important;
@@ -195,9 +151,18 @@ border:none !important;
   transition: all 0.5s ease-in-out !important;
 
 }
-
 .justify {
   
   text-align: center !important;
   color:limegreen !important;
 }
+
+
+.btnQ .btn {
+  font-size: 1rem !important;
+  color:black;
+  border-radius:0 !important;
+
+} 
+
+
