@@ -1,28 +1,17 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useState } from "react";
 import { GlobalContext } from "../../Context";
 import { Container, Row, Col } from "reactstrap";
 import { Button } from "reactstrap";
 
-const initialState = 1;
-const reducer = (state, action) => {
-  switch (action) {
-    case "increment":
-      return state + 1;
-    case "decrement":
-      return state - 1;
-    case "reset":
-      return initialState;
 
-    default:
-      return state;
-  }
-};
+
 
 export const CartItem = ({ product }) => {
-  const { removeFromCart } = useContext(GlobalContext);
-  const [count, dispatch] = useReducer(reducer, initialState);
-  const { img, company, title, price, total } = product;
-  return (
+  const { removeFromCart,Increment } = useContext(GlobalContext);
+  // const [countt, dispatch] = useReducer(reducer,Cart);
+  let { img, company, title, price, total,count } = product;
+  let [ccount, setcount] = useState(1);
+  return ( 
     <>
       <Row className="text-center my-1">
         <Col xs="10" lg="2" className="mx-auto">
@@ -41,17 +30,19 @@ export const CartItem = ({ product }) => {
               outline
               disabled={count === 0 ? true : false}
               className="mx-1"
-              onClick={() => dispatch("decrement")}
+              onClick={() => console.log("This is my good")}
             >
               -
             </Button>
             <Button outline className="mx-1 ">
-              {count}
+              {count>1?count:ccount}
             </Button>
             <Button
               outline
               className="mx-1"
-              onClick={() => dispatch("increment")}
+              onClick={() => {
+                setcount(++ccount);
+                Increment(product); }}
             >
               +
             </Button>
@@ -59,18 +50,29 @@ export const CartItem = ({ product }) => {
         </Col>
 
         <Col xs="10" lg="2" className="mx-auto">
-          <div
-            className="cart-icon"
-            onClick={() => removeFromCart(product)}
-          
-          >
-            <i className="fas fa-trash"></i>
+          <div className="cart-icon" onClick={() => removeFromCart(product)}>
+            <i className="fa fa-trash-o"></i>
           </div>
         </Col>
         <Col xs="10" lg="2" className="mx-auto">
-          {price*count}
+          {price * count}
         </Col>
       </Row>
     </>
   );
 };
+
+
+// const reducer = (state, action) => {
+//   console.log(state)
+//   switch (action) {
+//     case "increment":
+
+//     //   return state + 1;
+//     // case "decrement":
+//     //   return state - 1;
+
+//     default:
+//       return state;
+//   }
+// };

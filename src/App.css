@@ -166,3 +166,7 @@ border:none !important;
 } 
 
 
+.btnQ .fa {
+  color: yellow !important;
+  cursor: pointer;
+}

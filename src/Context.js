@@ -27,6 +27,7 @@ export const ProductProvider = ({children}) => {
 
     }
 
+
     function removeFromCart(transObj) {
         console.log(transObj)
         dispatch(
@@ -39,6 +40,19 @@ export const ProductProvider = ({children}) => {
 
     }
 
+    function Increment(transObj) {
+        console.log(transObj);
+        dispatch(
+            {
+                type: 'increment',
+                payload: transObj
+                
+            }
+        );
+
+    }
+
+
 
 
     return (
@@ -46,6 +60,7 @@ export const ProductProvider = ({children}) => {
           storeProducts,
           addToCart,
           removeFromCart,
+          Increment,
           Cart:state
       }}>
           
@@ -60,8 +75,10 @@ const reducer = ( (state, action) => {
     console.log(state)
     switch (action.type) {
         case 'AddToCart': {
-                    
+            action.payload.count=1;
+            action.payload.total = action.payload.price * action.payload.count;
              return (
+               
                 action.payload.inCart=true,
                 [...state, action.payload]
              )
@@ -69,13 +86,22 @@ const reducer = ( (state, action) => {
 
         case 'removeFromCart': {
                  console.log(action.payload)
-
+                action.payload.count=0;
                 action.payload.inCart=false;
             const newState =state.filter( trans => trans !== action.payload)    
                 console.log(newState)
             return newState;
        
         }
+
+        case 'increment': {
+           
+            action.payload.count+=1;
+            action.payload.total = action.payload.price * action.payload.count;
+            return state;
+  
+   }
+        
         default:
             return state;
 
