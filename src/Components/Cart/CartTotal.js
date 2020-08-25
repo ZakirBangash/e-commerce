@@ -5,13 +5,9 @@ import { Link } from 'react-router-dom';
 import {GlobalContext} from '../../Context'
 
 export const CartTotal = () => {
- const {Cart} = useContext(GlobalContext);
- console.log(Cart)
-
-
-
-
-
+ const {cartSubTotal,cartTax,cartTotal} = useContext(GlobalContext);
+    
+    
 
     return (
         <Container>
@@ -24,17 +20,17 @@ export const CartTotal = () => {
             </Link>  
             <h5>
                 <span className="text-title"> Subtotal: </span>
-                <strong>$3434</strong>
+    <strong>$ {cartSubTotal}</strong>
             </h5>
 
             <h5>
                 <span className="text-title"> tax: </span>
-                <strong>$3434</strong>
+    <strong>${cartTax}</strong>
             </h5>
 
             <h5>
                 <span className="text-title"> total: </span>
-                <strong>$3434</strong>
+                <strong>${cartTotal}</strong>
             </h5>
             </Col>
         </Row>

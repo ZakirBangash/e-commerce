@@ -1,4 +1,4 @@
-import React,{createContext,useReducer,useState} from 'react';
+import React,{createContext,useReducer,useState, useDebugValue} from 'react';
 import {storeProducts,detailProduct} from './Data'
 import { act } from 'react-dom/test-utils';
 
@@ -7,22 +7,34 @@ export const GlobalContext = createContext();
 const Cart=[ ];
 
 export const ProductProvider = ({children}) => {
- 
-    
-// Use Reducer for state management
-    
-    
-    let [state, dispatch] = useReducer(reducer, Cart);
+let [state, dispatch] = useReducer(reducer, Cart);
+let [cartSubTotal, setSubTotal] = useState(0);
+let [cartTax, setTax] = useState(0);
+let [cartTotal, setTotal] = useState(0);
+console.log(state)
 
+ const addTotal = ()=>{
+    let subTotal = 0;
+    state.map(item =>  subTotal += item.total )
+    console.log(subTotal)    
+    const tempTax = subTotal * 0.1;
+    const tax = tempTax.toFixed(2);
+    const total = subTotal+tax;
+    setSubTotal(subTotal);
+    setTax(tax);
+    setTotal(total);
+}
+    
 
     function addToCart(transObj) {
-        console.log(transObj);
+        
         dispatch(
             {
                 type: 'AddToCart',
                 payload: transObj
                 
             }
+
         );
 
     }
@@ -41,7 +53,7 @@ export const ProductProvider = ({children}) => {
     }
 
     function Increment(transObj) {
-        console.log(transObj);
+    
         dispatch(
             {
                 type: 'increment',
@@ -49,7 +61,18 @@ export const ProductProvider = ({children}) => {
                 
             }
         );
-
+    
+    }
+    function decrement(transObj) {
+    
+        dispatch(
+            {
+                type: 'decrement',
+                payload: transObj
+                
+            }
+        );
+    
     }
 
 
@@ -61,7 +84,12 @@ export const ProductProvider = ({children}) => {
           addToCart,
           removeFromCart,
           Increment,
-          Cart:state
+          decrement,
+          Cart:state,
+          cartSubTotal,
+          cartTax,
+          cartTotal,
+          addTotal
       }}>
           
           {children}  
@@ -72,7 +100,7 @@ export const ProductProvider = ({children}) => {
 
 
 const reducer = ( (state, action) => {
-    console.log(state)
+
     switch (action.type) {
         case 'AddToCart': {
             action.payload.count=1;
@@ -85,11 +113,12 @@ const reducer = ( (state, action) => {
         }
 
         case 'removeFromCart': {
-                 console.log(action.payload)
+                
                 action.payload.count=0;
-                action.payload.inCart=false;
+               
+            action.payload.inCart=false;
             const newState =state.filter( trans => trans !== action.payload)    
-                console.log(newState)
+            action.payload.total = 0;
             return newState;
        
         }
@@ -97,10 +126,18 @@ const reducer = ( (state, action) => {
         case 'increment': {
            
             action.payload.count+=1;
-            action.payload.total = action.payload.price * action.payload.count;
+            action.payload.total = action.payload.price * action.payload.count;       
             return state;
   
    }
+
+   case 'decrement': {
+           
+    action.payload.count-=1;
+    action.payload.total = action.payload.price * action.payload.count; 
+    return state;
+
+}
         
         default:
             return state;
