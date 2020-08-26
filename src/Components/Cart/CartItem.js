@@ -1,28 +1,32 @@
 import React, { useContext, useState } from "react";
 import { GlobalContext } from "../../Context";
-import { Container, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import { Button } from "reactstrap";
-import { CartTotal } from "./CartTotal";
 
 export const CartItem = ({ product }) => {
   const { removeFromCart, Increment, addTotal,decrement } = useContext(GlobalContext);
   // const [countt, dispatch] = useReducer(reducer,Cart);
   let { img, company, title, price, total, count } = product;
   let [ccount, setcount] = useState(1);
+
+  
   return (
     <>
+    
       <Row className="text-center my-1">
         <Col xs="10" lg="2" className="mx-auto">
           <img src={img} className="img-fluid" />
         </Col>
-        <Col xs="10" lg="2" className="mx-auto ">
+        <Col xs="10" lg="2" className="mx-auto  mb-sm-3">
+         <span className="d-lg-none font-weight-bold mb-4">Product: </span>
           {company}
         </Col>
-        <Col xs="10" lg="2" className="mx-auto">
+        <Col xs="10" lg="2" className="mx-auto  mb-sm-3">
+        <span className="d-lg-none font-weight-bold mb-4">Price: </span>
           {price}
         </Col>
 
-        <Col xs="10" lg="2" className="mx-auto">
+        <Col xs="10" lg="2" className="mx-auto  mb-sm-3">
           <div className="btnQ">
             <Button
               outline
@@ -36,7 +40,7 @@ export const CartItem = ({ product }) => {
               -
             </Button>
 
-            <Button outline className="mx-1 ">
+            <Button outline >
               {count > 1 ? count : ccount}
             </Button>
             <Button
@@ -55,12 +59,13 @@ export const CartItem = ({ product }) => {
           </div>
         </Col>
 
-        <Col xs="10" lg="2" className="mx-auto">
+        <Col xs="10" lg="2" className="mx-auto  mb-sm-3">
           <div className="cart-icon" onClick={() => removeFromCart(product)}>
             <i className="fa fa-trash-o"></i>
           </div>
         </Col> 
-        <Col xs="10" lg="2" className="mx-auto">
+        <Col xs="10" lg="2" className="mx-auto  mb-sm-3">
+          <span className="d-lg-none font-weight-bold">Total: </span>
           {price * count}
         </Col>
       </Row>
@@ -68,16 +73,4 @@ export const CartItem = ({ product }) => {
   );
 };
 
-// const reducer = (state, action) => {
-//   console.log(state)
-//   switch (action) {
-//     case "increment":
 
-//     //   return state + 1;
-//     // case "decrement":
-//     //   return state - 1;
-
-//     default:
-//       return state;
-//   }
-// };

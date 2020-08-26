@@ -8,7 +8,7 @@ import Modall from "./Modal";
 import ProductModal from "./Modal";
 
 export const Product = ({ product }) => {
-  const { storeProducts,addToCart,addTotal } = useContext(GlobalContext);
+  const { storeProducts,addToCart,addTotal,Cart } = useContext(GlobalContext);
   const { img, price, inCart } = storeProducts[product];
 
   const [modal, setModal] = useState(false);
@@ -16,7 +16,9 @@ export const Product = ({ product }) => {
 
   const toggle = () => setModal(!modal);
   const getItem = (prod)=> prod;
-
+  if(Cart.length>0)
+    addTotal();
+    
   return (
     <Col className="my-5 mx-auto">
       <Card className="card">
@@ -43,20 +45,14 @@ export const Product = ({ product }) => {
             )}
             
           </button>
+          
              {/* i am placing addTotal() below this line instead of
                onClick addToCart b\c it was skipping first attempt */}
-               { addTotal()}
+            
 
 
   {state === undefined ? '' : <ProductModal modal={modal} state={state} toggle={toggle} />}
-          
-      
-          
            
-          
-
-          
- 
 
         </CardBody>
         <CardFooter className="footer d-flex justify-content-between">

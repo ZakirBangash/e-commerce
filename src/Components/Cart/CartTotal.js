@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import {GlobalContext} from '../../Context'
 
 export const CartTotal = () => {
- const {cartSubTotal,cartTax,cartTotal} = useContext(GlobalContext);
+ const {cartSubTotal,cartTax,cartTotal,clearCart} = useContext(GlobalContext);
     
     
 
@@ -14,7 +14,7 @@ export const CartTotal = () => {
         <Row>
             <Col xs='10' sm='8' className='mt-2 ml-sm-5 ml-md-auto  text-capitalize  text-right'>
               <Link to="/"> 
-            <Button outline color="danger" className="px-5  mb-3 text-uppercase">
+            <Button outline color="danger" onClick={clearCart} className="px-5  mb-3 text-uppercase">
               Clear Cart
             </Button>
             </Link>  
